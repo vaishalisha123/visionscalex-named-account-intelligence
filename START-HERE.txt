@@ -1,0 +1,46 @@
+VISION SCALEX — DOWNLOADABLE FRONT END
+
+QUICK START — NO INSTALLATION
+1. Extract this ZIP into a folder.
+2. Open index.html in Chrome, Edge, Firefox or Safari.
+3. Use the sidebar to explore client context, named accounts, signal definitions,
+   search planning, signal results and the conversation queue.
+
+The HTML file contains its own application code, styles, icons and example data.
+It does not need a server or internet connection to display the workspace.
+Opening original source links requires an internet connection.
+
+Included data: the supplied Aranca workbook, with 19 named accounts, 14 signal
+families, 266 account/signal query rows (42 prepared), and 80 search results.
+
+Changes are saved in browser storage when allowed. For local HTML files, storage
+behavior varies by browser and file location. Use the CSV/JSON export controls to
+retain your edits; moving the file can change where browser storage is kept.
+
+LIVE PROCESSING
+This is the front end. Website extraction, AI assessments, live searches, shared
+storage and scheduled monitoring are not connected. Prepare a run downloads a
+run plan; it does not execute searches. Existing supplied assessments are
+retained, including the row flagged for review.
+
+FOR YOUR DEVELOPER
+The source/ directory contains the complete React/TypeScript project, imported
+data, component catalog, styles, dependency lockfile and integration notes.
+
+To run the source project:
+- Install Node.js 22.13 or newer and pnpm 11.25.0.
+- Open a terminal in the source folder.
+- Run: pnpm install --frozen-lockfile
+- Run: pnpm dev
+- Open the local URL shown in the terminal (normally http://localhost:5173).
+- Run: pnpm build   to create a production build.
+
+The source uses the Vinext/Vite and Cloudflare-compatible starter of the hosted
+version. Installing source dependencies requires internet access. You do not need
+to install them to use index.html. See source/README.md for field mappings,
+integration boundaries and the identified QBC/relevance discrepancy.
+
+The standalone HTML is a compiled snapshot. Source changes do not automatically
+modify index.html; rebuild or use the source development server to see edits.
+The export does not include dependency folders, Git history, API keys, raw
+notebooks, or a binding to the existing live site's project identity.
