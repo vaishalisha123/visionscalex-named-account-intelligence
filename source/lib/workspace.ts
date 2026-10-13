@@ -1,5 +1,8 @@
 import seed from './seed.json';
-export type Client = typeof seed.client;
+export type Client = Omit<typeof seed.client, 'subsidiaries' | 'aliases'> & {
+  subsidiaries: string[];
+  aliases: string[];
+};
 export type Account = typeof seed.accounts[number];
 export type Signal = typeof seed.signals[number];
 export type Query = typeof seed.queries[number];
@@ -73,4 +76,7 @@ export function parseCsv(text:string):string[][] {
   for(let i=0;i<text.length;i++){const c=text[i];if(c==='"'){if(quoted&&text[i+1]==='"'){cell+='"';i++;}else quoted=!quoted;}else if(c===','&&!quoted){row.push(cell);cell='';}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&text[i+1]==='\n')i++;row.push(cell);if(row.some(x=>x.trim()))rows.push(row);row=[];cell='';}else cell+=c;}
   if(quoted)throw Error('The CSV has an unclosed quote.');row.push(cell);if(row.some(x=>x.trim()))rows.push(row);return rows;
 }
-export function blankAccount(name:string,website:string,linkedin=''):Account { return {id:'a-'+crypto.randomUUID(),name,website,linkedin,description:'',services:[],serviceDetails:[],problems:[],engagements:[],buyingSituations:[],locations:[],parent:'Unknown',subsidiaries:[],aliases:[]}; }
+export function blankAccount(name:string,website:string,linkedin=''):Account { return {id: 'a-' + (typeof crypto !== 'undefined' &&typeof crypto.randomUUID === 'function'
+? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(36).slice(2)}`
+),name,website,linkedin,description:'',services:[],serviceDetails:[],problems:[],engagements:[],buyingSituations:[],locations:[],parent:'Unknown',subsidiaries:[],aliases:[]}; }

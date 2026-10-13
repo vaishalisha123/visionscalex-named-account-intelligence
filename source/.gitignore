@@ -44,3 +44,24 @@ next-env.d.ts
 /.codex/
 /outputs/
 /work/
+
+# Local backups — never upload
+*.bak
+*.before-*
+*.corrupted-backup
+
+# Local build/cache files
+*.tsbuildinfo
+node_modules/
+.next/
+.vinext/
+
+# Backend secrets, local databases, and Python caches
+/backend/.env
+/backend/.env.*
+!/backend/.env.example
+/backend/*.db
+/backend/*.sqlite
+/backend/*.sqlite3
+/backend/__pycache__/
+/backend/**/__pycache__/
